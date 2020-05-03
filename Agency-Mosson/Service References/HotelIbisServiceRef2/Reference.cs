@@ -9,99 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace Agency_Mosson.HotelIbisServiceRef2 {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Offer", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Offer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdField;
-        
-        private int NumberOfBedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DateAvailableField;
-        
-        private int PriceField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int NumberOfBed {
-            get {
-                return this.NumberOfBedField;
-            }
-            set {
-                if ((this.NumberOfBedField.Equals(value) != true)) {
-                    this.NumberOfBedField = value;
-                    this.RaisePropertyChanged("NumberOfBed");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string DateAvailable {
-            get {
-                return this.DateAvailableField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DateAvailableField, value) != true)) {
-                    this.DateAvailableField = value;
-                    this.RaisePropertyChanged("DateAvailable");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public int Price {
-            get {
-                return this.PriceField;
-            }
-            set {
-                if ((this.PriceField.Equals(value) != true)) {
-                    this.PriceField = value;
-                    this.RaisePropertyChanged("Price");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HotelIbisServiceRef2.HotelWebService2Soap")]
@@ -181,12 +89,12 @@ namespace Agency_Mosson.HotelIbisServiceRef2 {
     public partial class doBookingResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public Agency_Mosson.HotelIbisServiceRef2.Offer doBookingResult;
+        public string doBookingResult;
         
         public doBookingResponseBody() {
         }
         
-        public doBookingResponseBody(Agency_Mosson.HotelIbisServiceRef2.Offer doBookingResult) {
+        public doBookingResponseBody(string doBookingResult) {
             this.doBookingResult = doBookingResult;
         }
     }
@@ -223,7 +131,7 @@ namespace Agency_Mosson.HotelIbisServiceRef2 {
             return base.Channel.doBooking(request);
         }
         
-        public Agency_Mosson.HotelIbisServiceRef2.Offer doBooking(string _userName, string _password, int _offer_id) {
+        public string doBooking(string _userName, string _password, int _offer_id) {
             Agency_Mosson.HotelIbisServiceRef2.doBookingRequest inValue = new Agency_Mosson.HotelIbisServiceRef2.doBookingRequest();
             inValue.Body = new Agency_Mosson.HotelIbisServiceRef2.doBookingRequestBody();
             inValue.Body._userName = _userName;

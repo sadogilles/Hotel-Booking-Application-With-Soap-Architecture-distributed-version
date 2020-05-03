@@ -18,8 +18,8 @@ namespace Agency_Mosson
     {
         AgencyController agencyControl = new AgencyController();
         [WebMethod]
-        public List<Offer> doBooking(String _userName, String _password){ 
-           return  agencyControl.doBooking(_userName, _password);
+        public String doBooking(String hotelName,int roomId,String clientFirstName,String clientLastName,String clientCardInfo){ 
+           return  agencyControl.doBooking(hotelName,roomId,clientFirstName,clientLastName,clientCardInfo);
         }
     }
 }

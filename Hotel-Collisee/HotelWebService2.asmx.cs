@@ -20,11 +20,11 @@ namespace Hotel_Collisee
         HotelController hotelController = new HotelController();
 
         [WebMethod]
-        public List<Offer> doBooking(String _userName, String _password)
+        public String doBooking(String _userName, String _password, int _offer_id)
         {
-            return hotelController.doBooking(_userName, _password);
+            return hotelController.doBooking(_userName, _password, _offer_id);
 
         }
-        
+
     }
 }

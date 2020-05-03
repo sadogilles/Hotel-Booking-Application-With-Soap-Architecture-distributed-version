@@ -46,7 +46,7 @@ namespace Hotel_Ibis
         }
         
 
-        public Offer doBooking(String _userName,String _password, int _offer_id)
+        public String doBooking(String _userName,String _password, int _offer_id)
         {
 
             foreach (AgencyInfo login in Hotel.Agencies)
@@ -54,18 +54,17 @@ namespace Hotel_Ibis
 
                 if (login.UserName.ToLower().Equals(_userName.ToLower()) && login.Password.ToLower().Equals(_password.ToLower()))
                 {
-                    //check the offer
-                    Offer off = Hotel.Offers.Where(o => o.Id == _offer_id).FirstOrDefault();
-                    return off;
+                    //return a success message
+                    return "Hotel Ibis Booking: Success";
 
                 }
                 else
                 {
-                    return Hotel.Offers.FirstOrDefault();
+                    return "Hotel Ibis : Error while Login";
                 }
 
             }
-            return null; // no offer
+            return null; //return nothing
         }
 
         

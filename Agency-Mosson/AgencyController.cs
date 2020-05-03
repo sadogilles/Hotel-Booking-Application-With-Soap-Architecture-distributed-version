@@ -7,11 +7,18 @@ namespace Agency_Mosson
 {
     public class AgencyController
     {
+
         //hotel references
         HotelColliseeServiceRef1.HotelWebService1SoapClient hotelColliseeClient;
-        HotelIbisServiceRef1.HotelWebServiceSoapClient hotelIbisClient;
-        HotelRenarviereServiceRef1.HotelWebService1SoapClient hotelRenarviereClient;
         HotelColliseeServiceRef2.HotelWebService2SoapClient hotelColliseeclient2;
+
+        HotelIbisServiceRef1.HotelWebServiceSoapClient hotelIbisClient;
+        HotelIbisServiceRef2.HotelWebService2SoapClient hotelIbisClient2;
+
+        //not used
+       // HotelRenarviereServiceRef1.HotelWebService1SoapClient hotelRenarviereClient;
+        
+        
         //hotel from service reference variables
         HotelColliseeServiceRef1.Hotel hotelCol;
         HotelRenarviereServiceRef1.Hotel hotelRev;
@@ -35,17 +42,20 @@ namespace Agency_Mosson
 
         public AgencyController()
         {
-            //service revefernce object
+            //service reveference object
             hotelColliseeClient = new HotelColliseeServiceRef1.HotelWebService1SoapClient();
-            hotelIbisClient = new HotelIbisServiceRef1.HotelWebServiceSoapClient();
-            hotelRenarviereClient = new HotelRenarviereServiceRef1.HotelWebService1SoapClient();
-            hotelColliseeclient2= new HotelColliseeServiceRef2.HotelWebService2SoapClient(); 
+            hotelColliseeclient2 = new HotelColliseeServiceRef2.HotelWebService2SoapClient();
 
+            hotelIbisClient = new HotelIbisServiceRef1.HotelWebServiceSoapClient();
+            hotelIbisClient2 = new HotelIbisServiceRef2.HotelWebService2SoapClient();
+
+           // hotelRenarviereClient = new HotelRenarviereServiceRef1.HotelWebService1SoapClient();
+        
             defaultHotel = new Hotel();
 
             //get the hotel from the service
             hotelCol = hotelColliseeClient.getHotel();
-            hotelRev = hotelRenarviereClient.getHotel();
+           //// hotelRev = hotelRenarviereClient.getHotel();
             hotelIbis = hotelIbisClient.getHotel();
 
             //local hotel object
@@ -93,8 +103,9 @@ namespace Agency_Mosson
             {
                 room = new Room();
                 //get the room
-                room.Id = r.Id;
-                room.Price = r.Price;
+                room.Id = r.Id; 
+                //reduction of 10% for all rooms
+                room.Price =Convert.ToInt32(r.Price - (r.Price * 0.1));
                 room.State = r.State;
                 room.Capacity = r.Capacity;
                 room.NumberOfBed = r.NumberOfBed;
@@ -133,7 +144,8 @@ namespace Agency_Mosson
                 //get the room
                 room = new Room();
                 room.Id = r.Id;
-                room.Price = r.Price;
+                //reduction of 10% for all rooms
+                room.Price = Convert.ToInt32(r.Price - (r.Price * 0.1)); ;
                 room.State = r.State;
                 room.Capacity = r.Capacity;
                 room.NumberOfBed = r.NumberOfBed;
@@ -171,33 +183,33 @@ namespace Agency_Mosson
         //returns all the hotels
         public List<Hotel> getHotel()
         {
-            //HotelRenarviereServiceRef.Room[] roomRenav = hotelRev.Rooms;
-            //// loop through the rooms of hotel Renarviere
-            //foreach (HotelRenarviereServiceRef.Room r in roomRenav)
-            //{
-            //    //get the rooms
-            //    room.Id = r.Id;
-            //    room.Price = r.Price;
-            //    room.State = r.State;
-            //    room.Capacity = r.Capacity;
-            //    room.NumberOfBed = r.NumberOfBed;
-
-            //    renarviere.Rooms.Add(room);
-
-            //    Console.WriteLine(r.Price);
-
-            //}
-
-            //hotels.Add(renarviere);
-
+            
             return hotels;
 
         }
 
-        public List<Offer> doBooking(String _userName,String _password)
+        public String doBooking(String hotelName, int roomID , String clientFirstName, String clientLastName, String clientCardInfo)
         {
+            String agencyName = "mosson";
+            String password = "mosson2020";
+            int offerId = 1;
+            String result = null;
+            //check the corresponding hotel
 
-            return hotels.FirstOrDefault().offers;
+            if (hotelName.ToLower().Equals("ibis")){
+                //do the reservation
+                result=hotelIbisClient2.doBooking(agencyName, password, offerId);
+            
+
+            }
+
+            if (hotelName.ToLower().Equals("collisee"))
+            {
+               result =hotelColliseeclient2.doBooking(agencyName, password, offerId);
+
+            }   
+
+            return result;
           
         }
 
@@ -209,7 +221,7 @@ namespace Agency_Mosson
             {
 
                 //search hotel
-                if (h.Name.Equals(_hotelName))
+                if (h.Name.ToLower().Equals(_hotelName.ToLower()))
                 {
                     hotel = h;
 
@@ -235,7 +247,7 @@ namespace Agency_Mosson
 
             foreach (Hotel hotel in hotels)
             {
-                if (hotel.Town.Equals(_town) && hotel.Rating.Equals(_numberOfStars))
+                if (hotel.Town.ToLower().Equals(_town.ToLower()) && hotel.Rating.Equals(_numberOfStars))
                 {
 
                     foreach (Room room in hotel.Rooms)

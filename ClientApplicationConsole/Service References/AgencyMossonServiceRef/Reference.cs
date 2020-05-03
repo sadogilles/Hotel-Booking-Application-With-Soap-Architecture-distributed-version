@@ -48,6 +48,9 @@ namespace ClientApplicationConsole.AgencyMossonServiceRef {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private ClientApplicationConsole.AgencyMossonServiceRef.Room[] RoomsField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClientApplicationConsole.AgencyMossonServiceRef.Offer[] offersField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -188,6 +191,19 @@ namespace ClientApplicationConsole.AgencyMossonServiceRef {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=10)]
+        public ClientApplicationConsole.AgencyMossonServiceRef.Offer[] offers {
+            get {
+                return this.offersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.offersField, value) != true)) {
+                    this.offersField = value;
+                    this.RaisePropertyChanged("offers");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -303,6 +319,96 @@ namespace ClientApplicationConsole.AgencyMossonServiceRef {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Offer", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Offer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdField;
+        
+        private int NumberOfBedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DateAvailableField;
+        
+        private int PriceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int NumberOfBed {
+            get {
+                return this.NumberOfBedField;
+            }
+            set {
+                if ((this.NumberOfBedField.Equals(value) != true)) {
+                    this.NumberOfBedField = value;
+                    this.RaisePropertyChanged("NumberOfBed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string DateAvailable {
+            get {
+                return this.DateAvailableField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DateAvailableField, value) != true)) {
+                    this.DateAvailableField = value;
+                    this.RaisePropertyChanged("DateAvailable");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public int Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AgencyMossonServiceRef.AgencyWebServiceSoap")]
     public interface AgencyWebServiceSoap {
@@ -313,13 +419,6 @@ namespace ClientApplicationConsole.AgencyMossonServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getHotel", ReplyAction="*")]
         System.Threading.Tasks.Task<ClientApplicationConsole.AgencyMossonServiceRef.getHotelResponse> getHotelAsync(ClientApplicationConsole.AgencyMossonServiceRef.getHotelRequest request);
-        
-        // CODEGEN: Generating message contract since element name _firstName from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getBookingInformaton", ReplyAction="*")]
-        ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonResponse getBookingInformaton(ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getBookingInformaton", ReplyAction="*")]
-        System.Threading.Tasks.Task<ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonResponse> getBookingInformatonAsync(ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonRequest request);
         
         // CODEGEN: Generating message contract since element name _hotelName from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getRoomFromHotel", ReplyAction="*")]
@@ -394,94 +493,6 @@ namespace ClientApplicationConsole.AgencyMossonServiceRef {
         
         public getHotelResponseBody(ClientApplicationConsole.AgencyMossonServiceRef.Hotel[] getHotelResult) {
             this.getHotelResult = getHotelResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class getBookingInformatonRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="getBookingInformaton", Namespace="http://tempuri.org/", Order=0)]
-        public ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonRequestBody Body;
-        
-        public getBookingInformatonRequest() {
-        }
-        
-        public getBookingInformatonRequest(ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class getBookingInformatonRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int _hotel_id;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-        public int _room_id;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public int client_id;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string _firstName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string _lastName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public string _cardInfo;
-        
-        public getBookingInformatonRequestBody() {
-        }
-        
-        public getBookingInformatonRequestBody(int _hotel_id, int _room_id, int client_id, string _firstName, string _lastName, string _cardInfo) {
-            this._hotel_id = _hotel_id;
-            this._room_id = _room_id;
-            this.client_id = client_id;
-            this._firstName = _firstName;
-            this._lastName = _lastName;
-            this._cardInfo = _cardInfo;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class getBookingInformatonResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="getBookingInformatonResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonResponseBody Body;
-        
-        public getBookingInformatonResponse() {
-        }
-        
-        public getBookingInformatonResponse(ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class getBookingInformatonResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string getBookingInformatonResult;
-        
-        public getBookingInformatonResponseBody() {
-        }
-        
-        public getBookingInformatonResponseBody(string getBookingInformatonResult) {
-            this.getBookingInformatonResult = getBookingInformatonResult;
         }
     }
     
@@ -681,41 +692,6 @@ namespace ClientApplicationConsole.AgencyMossonServiceRef {
             ClientApplicationConsole.AgencyMossonServiceRef.getHotelRequest inValue = new ClientApplicationConsole.AgencyMossonServiceRef.getHotelRequest();
             inValue.Body = new ClientApplicationConsole.AgencyMossonServiceRef.getHotelRequestBody();
             return ((ClientApplicationConsole.AgencyMossonServiceRef.AgencyWebServiceSoap)(this)).getHotelAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonResponse ClientApplicationConsole.AgencyMossonServiceRef.AgencyWebServiceSoap.getBookingInformaton(ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonRequest request) {
-            return base.Channel.getBookingInformaton(request);
-        }
-        
-        public string getBookingInformaton(int _hotel_id, int _room_id, int client_id, string _firstName, string _lastName, string _cardInfo) {
-            ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonRequest inValue = new ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonRequest();
-            inValue.Body = new ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonRequestBody();
-            inValue.Body._hotel_id = _hotel_id;
-            inValue.Body._room_id = _room_id;
-            inValue.Body.client_id = client_id;
-            inValue.Body._firstName = _firstName;
-            inValue.Body._lastName = _lastName;
-            inValue.Body._cardInfo = _cardInfo;
-            ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonResponse retVal = ((ClientApplicationConsole.AgencyMossonServiceRef.AgencyWebServiceSoap)(this)).getBookingInformaton(inValue);
-            return retVal.Body.getBookingInformatonResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonResponse> ClientApplicationConsole.AgencyMossonServiceRef.AgencyWebServiceSoap.getBookingInformatonAsync(ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonRequest request) {
-            return base.Channel.getBookingInformatonAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonResponse> getBookingInformatonAsync(int _hotel_id, int _room_id, int client_id, string _firstName, string _lastName, string _cardInfo) {
-            ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonRequest inValue = new ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonRequest();
-            inValue.Body = new ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonRequestBody();
-            inValue.Body._hotel_id = _hotel_id;
-            inValue.Body._room_id = _room_id;
-            inValue.Body.client_id = client_id;
-            inValue.Body._firstName = _firstName;
-            inValue.Body._lastName = _lastName;
-            inValue.Body._cardInfo = _cardInfo;
-            return ((ClientApplicationConsole.AgencyMossonServiceRef.AgencyWebServiceSoap)(this)).getBookingInformatonAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

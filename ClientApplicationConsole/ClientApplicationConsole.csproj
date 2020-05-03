@@ -66,8 +66,14 @@
     <Compile Include="HomeWindowsForm.Designer.cs">
       <DependentUpon>HomeWindowsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="mossonBooking\doBooking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\AgencyMossonBookingServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\AgencyMossonServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -76,10 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Service References\AgencyMossonServiceRef\AgencyWebService.wsdl" />
-    <None Include="Service References\AgencyMossonServiceRef\ClientApplicationConsole.AgencyMossonServiceRef.getBookingInformatonResponse.datasource">
+    <None Include="Service References\AgencyMossonBookingServiceRef\AgencyBookingWebService.wsdl" />
+    <None Include="Service References\AgencyMossonBookingServiceRef\ClientApplicationConsole.AgencyMossonBookingServiceRef.doBookingResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\AgencyMossonServiceRef\AgencyWebService.wsdl" />
     <None Include="Service References\AgencyMossonServiceRef\ClientApplicationConsole.AgencyMossonServiceRef.getHotelResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -111,6 +118,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AgencyMossonBookingServiceRef\" />
     <WCFMetadataStorage Include="Service References\AgencyMossonServiceRef\" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +132,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\AgencyMossonServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AgencyMossonBookingServiceRef\AgencyBookingWebService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AgencyMossonBookingServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AgencyMossonBookingServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AgencyMossonBookingServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

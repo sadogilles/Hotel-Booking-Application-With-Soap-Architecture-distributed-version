@@ -20,7 +20,7 @@ namespace Hotel_Ibis
         HotelController hotelController = new HotelController();
        
         [WebMethod]
-        public Offer doBooking(String _userName, String _password, int _offer_id)
+        public String doBooking(String _userName, String _password, int _offer_id)
         {
            return hotelController.doBooking(_userName, _password, _offer_id);
 

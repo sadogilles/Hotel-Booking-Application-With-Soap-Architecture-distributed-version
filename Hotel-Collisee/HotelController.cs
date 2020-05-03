@@ -46,7 +46,7 @@ namespace Hotel_Collisee
         }
 
 
-        public Offer doBooking(String _userName, String _password, int _offer_id)
+        public String doBooking(String _userName, String _password, int _offer_id)
         {
 
             foreach (AgencyInfo login in Hotel.Agencies)
@@ -55,17 +55,19 @@ namespace Hotel_Collisee
                 if (login.UserName.ToLower().Equals(_userName.ToLower()) && login.Password.ToLower().Equals(_password.ToLower()))
                 {
                     //check the offer
-                    Offer off = Hotel.Offers.Where(o => o.Id == _offer_id).FirstOrDefault();
-                    return off;
+                    // off = Hotel.Offers.Where(o => o.Id == _offer_id).FirstOrDefault();
+
+                    return "Hotel Collisee Booking: Success";
 
                 }
                 else
                 {
-                    return Hotel.Offers.FirstOrDefault();
+                    //return Hotel.Offers.FirstOrDefault();
+                    return "Hotel Collisee Booking: Error Occured during Login";
                 }
 
             }
-            return null; // no offer
+            return null; // return nothing
         }
 
 

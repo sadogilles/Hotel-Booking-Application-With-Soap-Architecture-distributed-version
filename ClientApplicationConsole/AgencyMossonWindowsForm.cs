@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,13 +13,18 @@ namespace ClientApplicationConsole
 {
     public partial class AgencyMossonWindowsForm : Form
     {
+        //service for hotel consultation
         AgencyMossonServiceRef.AgencyWebServiceSoapClient mosson = new AgencyMossonServiceRef.AgencyWebServiceSoapClient();
+        //service for hotel booking
+        AgencyMossonBookingServiceRef.AgencyBookingWebServiceSoap mossonBooking = new AgencyMossonBookingServiceRef.AgencyBookingWebServiceSoapClient();
+
         AgencyMossonServiceRef.Hotel[] hotels;
         int numberOfClick = 1;
         AgencyMossonServiceRef.Room[] rooms;
 
         ClientBookingInformation client;
 
+       
         public AgencyMossonWindowsForm()
         {
             InitializeComponent();
@@ -67,6 +73,23 @@ namespace ClientApplicationConsole
                 listHotelGrid["country", row].Value = h.Country.ToString();
                 //console.writeline("hotel rating!");
                 //console.writeline(h.Rating);
+
+                List<int> prices = new List<int>();
+
+                //compute price
+                foreach (AgencyMossonServiceRef.Room r in h.Rooms)
+                {
+
+                    prices.Add(r.Price);
+
+                }
+
+                var minPrice = prices.Min();
+                var maxPrice = prices.Max();
+
+                String priceRange = minPrice.ToString() + "-" + maxPrice.ToString();
+
+                listHotelGrid["priceRange", row].Value = priceRange;
 
             }
 
@@ -117,7 +140,7 @@ namespace ClientApplicationConsole
                 client.NumberOfStars = Int32.Parse(numberOfStarsTextBox.Text);
 
                 //for simplicity consider we consider only townName,min price , max price and number of stars
-                hotels = mosson.searchhotel(client.HotelTown, client.MinPrice, client.MaxPrice, client.NumberOfStars);
+                hotels = mosson.searchhotel(client.HotelTown.ToLower(), client.MinPrice, client.MaxPrice, client.NumberOfStars);
 
                // foreach (HotelBookingServiceReference.Hotel item in hotels) Console.WriteLine(item);
 
@@ -141,6 +164,23 @@ namespace ClientApplicationConsole
                     listHotelGrid["town", row].Value = h.Town.ToString();
                     listHotelGrid["country", row].Value = h.Country.ToString();
                     listHotelGrid["chooseHotel", row].Value = submitButton;
+
+                    List<int> prices = new List<int>();
+
+                    //compute price
+                    foreach (AgencyMossonServiceRef.Room r in h.Rooms)
+                    {
+
+                        prices.Add(r.Price);
+
+                    }
+
+                    var minPrice = prices.Min();
+                    var maxPrice = prices.Max();
+
+                    String priceRange = minPrice.ToString() + "-" + maxPrice.ToString();
+
+                    listHotelGrid["priceRange", row].Value = priceRange;
                 }
             }
         }
@@ -158,6 +198,7 @@ namespace ClientApplicationConsole
 
 
             if (e.ColumnIndex == 8)
+
             {
                 //load the rooms
                 if (listHotelGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
@@ -168,7 +209,7 @@ namespace ClientApplicationConsole
                     client.HotelName = listHotelGrid.Rows[e.RowIndex].Cells["name"].FormattedValue.ToString();
                     rooms = mosson.getRoomFromHotel(client.HotelName); //get the room from the service
 
-                    //clear grid
+                    //clear grid 
                     roomDataGridView.DataSource = null;
                     roomDataGridView.Rows.Clear();
 
@@ -197,8 +238,7 @@ namespace ClientApplicationConsole
                 if (roomDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
                     roomDataGridView.CurrentRow.Selected = true;
-                    //get the room id
-                    //client.RoomId = Int32.Parse(roomDataGridView.Rows[e.RowIndex].Cells["roomId"].FormattedValue.ToString());
+                    client.RoomId = Int32.Parse(roomDataGridView.Rows[e.RowIndex].Cells["roomId"].FormattedValue.ToString());
                 }
             }
             else
@@ -213,6 +253,47 @@ namespace ClientApplicationConsole
         }
         //booking done by the second webservice
         private void submitClientInformation_Click(object sender, EventArgs e)
+        {
+
+            //check if fill isnot empty
+            if (String.IsNullOrEmpty(clientFirstNameTextBox.Text) || String.IsNullOrEmpty(clientLastNameTextBox.Text) || String.IsNullOrEmpty(clientCardInformationTextBox.Text))
+            {
+                notification.Text = "Some Field are Empty!";
+                return;
+
+
+            }
+            else
+            {
+                //do nothing
+            }
+
+
+            //make a booking with client credential
+            String respond = mossonBooking.doBooking(client.HotelName,client.RoomId,client.ClientFirstName, client.ClientLastName, client.ClientCardInfo);
+           
+            notification.Visible = true;
+
+            notification.Text = respond;
+            //hide notification panel
+            var timer = new Timer();
+            timer.Interval = 3000;
+
+            timer.Tick += (s, d) => {
+                notification.Visible = false;
+                timer.Stop();
+            };
+
+            timer.Start();
+
+
+            tableHotelInformation.Visible = false;
+            listHotelGrid.Visible = false;
+            ClientInformationLayoutPanel.Visible = false;
+            roomDataGridView.Visible = false;
+        }
+
+        private void AgencyMossonWindowsForm_Load(object sender, EventArgs e)
         {
 
         }

@@ -44,6 +44,13 @@
             this.title = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.roomDataGridView = new System.Windows.Forms.DataGridView();
+            this.roomId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomNumberOfBed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomCapacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomChoose = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ClientInformationLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.clientFirstNameLabel = new System.Windows.Forms.Label();
             this.clientLastNameLabel = new System.Windows.Forms.Label();
@@ -52,13 +59,6 @@
             this.clientCardInformationLabel = new System.Windows.Forms.Label();
             this.clientCardInformationTextBox = new System.Windows.Forms.TextBox();
             this.submitClientInformation = new System.Windows.Forms.Button();
-            this.roomDataGridView = new System.Windows.Forms.DataGridView();
-            this.roomId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomNumberOfBed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomCapacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomChoose = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableHotelInformation = new System.Windows.Forms.TableLayoutPanel();
             this.townLabel = new System.Windows.Forms.Label();
             this.arrivalDateLabel = new System.Windows.Forms.Label();
@@ -81,8 +81,8 @@
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.listHotelGrid)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.ClientInformationLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.roomDataGridView)).BeginInit();
+            this.ClientInformationLayoutPanel.SuspendLayout();
             this.tableHotelInformation.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.g.SuspendLayout();
@@ -106,6 +106,7 @@
             this.chooseHotel});
             this.listHotelGrid.Location = new System.Drawing.Point(31, 17);
             this.listHotelGrid.Name = "listHotelGrid";
+            this.listHotelGrid.RowHeadersWidth = 62;
             this.listHotelGrid.RowTemplate.Height = 28;
             this.listHotelGrid.Size = new System.Drawing.Size(1431, 435);
             this.listHotelGrid.TabIndex = 5;
@@ -114,54 +115,72 @@
             // name
             // 
             this.name.HeaderText = "Name";
+            this.name.MinimumWidth = 8;
             this.name.Name = "name";
+            this.name.Width = 150;
             // 
             // address
             // 
             this.address.HeaderText = "Address";
+            this.address.MinimumWidth = 8;
             this.address.Name = "address";
             this.address.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.address.Width = 150;
             // 
             // town
             // 
             this.town.HeaderText = "Town";
+            this.town.MinimumWidth = 8;
             this.town.Name = "town";
+            this.town.Width = 150;
             // 
             // country
             // 
             this.country.HeaderText = "Country";
+            this.country.MinimumWidth = 8;
             this.country.Name = "country";
+            this.country.Width = 150;
             // 
             // numberOfStars
             // 
             this.numberOfStars.HeaderText = "Number Of Stars";
+            this.numberOfStars.MinimumWidth = 8;
             this.numberOfStars.Name = "numberOfStars";
+            this.numberOfStars.Width = 150;
             // 
             // priceRange
             // 
             this.priceRange.HeaderText = "Price Range";
+            this.priceRange.MinimumWidth = 8;
             this.priceRange.Name = "priceRange";
+            this.priceRange.Width = 150;
             // 
             // numberOfBed
             // 
             this.numberOfBed.HeaderText = "Number Of Bed";
+            this.numberOfBed.MinimumWidth = 8;
             this.numberOfBed.Name = "numberOfBed";
+            this.numberOfBed.Width = 150;
             // 
             // phoneNumber
             // 
             this.phoneNumber.HeaderText = "Phone Number";
+            this.phoneNumber.MinimumWidth = 8;
             this.phoneNumber.Name = "phoneNumber";
+            this.phoneNumber.Width = 150;
             // 
             // chooseHotel
             // 
             this.chooseHotel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.chooseHotel.HeaderText = "Choose Hotel";
+            this.chooseHotel.MinimumWidth = 8;
             this.chooseHotel.Name = "chooseHotel";
             this.chooseHotel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.chooseHotel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.chooseHotel.Text = "Choose";
             this.chooseHotel.ToolTipText = "Choose an Hotel";
             this.chooseHotel.UseColumnTextForButtonValue = true;
+            this.chooseHotel.Width = 150;
             // 
             // listHotelButton
             // 
@@ -210,15 +229,80 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.roomDataGridView);
             this.groupBox2.Controls.Add(this.ClientInformationLayoutPanel);
             this.groupBox2.Controls.Add(this.tableHotelInformation);
             this.groupBox2.Controls.Add(this.listHotelGrid);
-            this.groupBox2.Controls.Add(this.roomDataGridView);
             this.groupBox2.Location = new System.Drawing.Point(79, 334);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1484, 452);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
+            // 
+            // roomDataGridView
+            // 
+            this.roomDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.roomDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.roomId,
+            this.roomPrice,
+            this.roomNumberOfBed,
+            this.roomCapacity,
+            this.roomStatus,
+            this.roomChoose});
+            this.roomDataGridView.Location = new System.Drawing.Point(31, 66);
+            this.roomDataGridView.Name = "roomDataGridView";
+            this.roomDataGridView.RowHeadersWidth = 62;
+            this.roomDataGridView.RowTemplate.Height = 28;
+            this.roomDataGridView.Size = new System.Drawing.Size(1109, 245);
+            this.roomDataGridView.TabIndex = 11;
+            this.roomDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.roomDataGridView_CellContentClick);
+            // 
+            // roomId
+            // 
+            this.roomId.HeaderText = "Room ID";
+            this.roomId.MinimumWidth = 8;
+            this.roomId.Name = "roomId";
+            this.roomId.Width = 150;
+            // 
+            // roomPrice
+            // 
+            this.roomPrice.HeaderText = "Price";
+            this.roomPrice.MinimumWidth = 8;
+            this.roomPrice.Name = "roomPrice";
+            this.roomPrice.Width = 150;
+            // 
+            // roomNumberOfBed
+            // 
+            this.roomNumberOfBed.HeaderText = "Number Of Bed";
+            this.roomNumberOfBed.MinimumWidth = 8;
+            this.roomNumberOfBed.Name = "roomNumberOfBed";
+            this.roomNumberOfBed.Width = 150;
+            // 
+            // roomCapacity
+            // 
+            this.roomCapacity.HeaderText = "Type of Bed";
+            this.roomCapacity.MinimumWidth = 8;
+            this.roomCapacity.Name = "roomCapacity";
+            this.roomCapacity.Width = 150;
+            // 
+            // roomStatus
+            // 
+            this.roomStatus.HeaderText = "Status";
+            this.roomStatus.MinimumWidth = 8;
+            this.roomStatus.Name = "roomStatus";
+            this.roomStatus.Width = 150;
+            // 
+            // roomChoose
+            // 
+            this.roomChoose.HeaderText = "Choose Room";
+            this.roomChoose.MinimumWidth = 8;
+            this.roomChoose.Name = "roomChoose";
+            this.roomChoose.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.roomChoose.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.roomChoose.Text = "Choose ";
+            this.roomChoose.ToolTipText = "Choose a room";
+            this.roomChoose.UseColumnTextForButtonValue = true;
+            this.roomChoose.Width = 150;
             // 
             // ClientInformationLayoutPanel
             // 
@@ -308,58 +392,6 @@
             this.submitClientInformation.Text = "Submit";
             this.submitClientInformation.UseVisualStyleBackColor = false;
             this.submitClientInformation.Click += new System.EventHandler(this.submitClientInformation_Click);
-            // 
-            // roomDataGridView
-            // 
-            this.roomDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.roomDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.roomId,
-            this.roomPrice,
-            this.roomNumberOfBed,
-            this.roomCapacity,
-            this.roomStatus,
-            this.roomChoose});
-            this.roomDataGridView.Location = new System.Drawing.Point(31, 66);
-            this.roomDataGridView.Name = "roomDataGridView";
-            this.roomDataGridView.RowTemplate.Height = 28;
-            this.roomDataGridView.Size = new System.Drawing.Size(1109, 245);
-            this.roomDataGridView.TabIndex = 11;
-            this.roomDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.roomDataGridView_CellContentClick);
-            // 
-            // roomId
-            // 
-            this.roomId.HeaderText = "Room ID";
-            this.roomId.Name = "roomId";
-            // 
-            // roomPrice
-            // 
-            this.roomPrice.HeaderText = "Price";
-            this.roomPrice.Name = "roomPrice";
-            // 
-            // roomNumberOfBed
-            // 
-            this.roomNumberOfBed.HeaderText = "Number Of Bed";
-            this.roomNumberOfBed.Name = "roomNumberOfBed";
-            // 
-            // roomCapacity
-            // 
-            this.roomCapacity.HeaderText = "Type of Bed";
-            this.roomCapacity.Name = "roomCapacity";
-            // 
-            // roomStatus
-            // 
-            this.roomStatus.HeaderText = "Status";
-            this.roomStatus.Name = "roomStatus";
-            // 
-            // roomChoose
-            // 
-            this.roomChoose.HeaderText = "Choose Room";
-            this.roomChoose.Name = "roomChoose";
-            this.roomChoose.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.roomChoose.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.roomChoose.Text = "Choose ";
-            this.roomChoose.ToolTipText = "Choose a room";
-            this.roomChoose.UseColumnTextForButtonValue = true;
             // 
             // tableHotelInformation
             // 
@@ -553,7 +585,7 @@
             this.g.Controls.Add(this.notification);
             this.g.Location = new System.Drawing.Point(1031, 289);
             this.g.Name = "g";
-            this.g.Size = new System.Drawing.Size(239, 57);
+            this.g.Size = new System.Drawing.Size(510, 57);
             this.g.TabIndex = 16;
             this.g.TabStop = false;
             // 
@@ -584,12 +616,13 @@
             this.Controls.Add(this.g);
             this.Controls.Add(this.label4);
             this.Name = "AgencyMossonWindowsForm";
-            this.Text = "AgencyMossonWindowsForm";
+            this.Text = "er";
+            this.Load += new System.EventHandler(this.AgencyMossonWindowsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.listHotelGrid)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.roomDataGridView)).EndInit();
             this.ClientInformationLayoutPanel.ResumeLayout(false);
             this.ClientInformationLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.roomDataGridView)).EndInit();
             this.tableHotelInformation.ResumeLayout(false);
             this.tableHotelInformation.PerformLayout();
             this.groupBox1.ResumeLayout(false);

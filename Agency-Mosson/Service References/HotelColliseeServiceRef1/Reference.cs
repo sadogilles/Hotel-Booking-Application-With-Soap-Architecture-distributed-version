@@ -595,24 +595,12 @@ namespace Agency_Mosson.HotelColliseeServiceRef1 {
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
         public string _password;
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string _startReservationDate;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string _endReservationDate;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-        public int _numberOfPersonToHost;
-        
         public getAgencyLoginRequestBody() {
         }
         
-        public getAgencyLoginRequestBody(string _userName, string _password, string _startReservationDate, string _endReservationDate, int _numberOfPersonToHost) {
+        public getAgencyLoginRequestBody(string _userName, string _password) {
             this._userName = _userName;
             this._password = _password;
-            this._startReservationDate = _startReservationDate;
-            this._endReservationDate = _endReservationDate;
-            this._numberOfPersonToHost = _numberOfPersonToHost;
         }
     }
     
@@ -705,14 +693,11 @@ namespace Agency_Mosson.HotelColliseeServiceRef1 {
             return base.Channel.getAgencyLogin(request);
         }
         
-        public Agency_Mosson.HotelColliseeServiceRef1.Offer[] getAgencyLogin(string _userName, string _password, string _startReservationDate, string _endReservationDate, int _numberOfPersonToHost) {
+        public Agency_Mosson.HotelColliseeServiceRef1.Offer[] getAgencyLogin(string _userName, string _password) {
             Agency_Mosson.HotelColliseeServiceRef1.getAgencyLoginRequest inValue = new Agency_Mosson.HotelColliseeServiceRef1.getAgencyLoginRequest();
             inValue.Body = new Agency_Mosson.HotelColliseeServiceRef1.getAgencyLoginRequestBody();
             inValue.Body._userName = _userName;
             inValue.Body._password = _password;
-            inValue.Body._startReservationDate = _startReservationDate;
-            inValue.Body._endReservationDate = _endReservationDate;
-            inValue.Body._numberOfPersonToHost = _numberOfPersonToHost;
             Agency_Mosson.HotelColliseeServiceRef1.getAgencyLoginResponse retVal = ((Agency_Mosson.HotelColliseeServiceRef1.HotelWebService1Soap)(this)).getAgencyLogin(inValue);
             return retVal.Body.getAgencyLoginResult;
         }
@@ -722,14 +707,11 @@ namespace Agency_Mosson.HotelColliseeServiceRef1 {
             return base.Channel.getAgencyLoginAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Agency_Mosson.HotelColliseeServiceRef1.getAgencyLoginResponse> getAgencyLoginAsync(string _userName, string _password, string _startReservationDate, string _endReservationDate, int _numberOfPersonToHost) {
+        public System.Threading.Tasks.Task<Agency_Mosson.HotelColliseeServiceRef1.getAgencyLoginResponse> getAgencyLoginAsync(string _userName, string _password) {
             Agency_Mosson.HotelColliseeServiceRef1.getAgencyLoginRequest inValue = new Agency_Mosson.HotelColliseeServiceRef1.getAgencyLoginRequest();
             inValue.Body = new Agency_Mosson.HotelColliseeServiceRef1.getAgencyLoginRequestBody();
             inValue.Body._userName = _userName;
             inValue.Body._password = _password;
-            inValue.Body._startReservationDate = _startReservationDate;
-            inValue.Body._endReservationDate = _endReservationDate;
-            inValue.Body._numberOfPersonToHost = _numberOfPersonToHost;
             return ((Agency_Mosson.HotelColliseeServiceRef1.HotelWebService1Soap)(this)).getAgencyLoginAsync(inValue);
         }
     }

@@ -117,9 +117,6 @@
     <Content Include="Service References\HotelColliseeServiceRef2\Agency_Mosson.HotelColliseeServiceRef2.doBookingResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\HotelColliseeServiceRef2\Agency_Mosson.HotelColliseeServiceRef2.Offer.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\HotelColliseeServiceRef2\HotelWebService2.wsdl" />
     <Content Include="Service References\HotelIbisServiceRef1\Agency_Mosson.HotelIbisServiceRef1.getAgencyLoginResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -135,9 +132,6 @@
     </Content>
     <None Include="Service References\HotelIbisServiceRef1\HotelWebService1.wsdl" />
     <Content Include="Service References\HotelIbisServiceRef2\Agency_Mosson.HotelIbisServiceRef2.doBookingResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\HotelIbisServiceRef2\Agency_Mosson.HotelIbisServiceRef2.Offer.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\HotelIbisServiceRef2\HotelWebService2.wsdl" />
