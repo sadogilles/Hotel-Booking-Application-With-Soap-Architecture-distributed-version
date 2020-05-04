@@ -88,7 +88,7 @@ namespace Hotel_Ibis
             //rooms of the hotel
             Rooms.Add(new Room(1, 200, 4, "single")); //parameters: id, price, number of bed , capacity
             Rooms.Add(new Room(2, 50, 4, "double"));
-            Rooms.Add(new Room(3, 5, 3, "quad"));
+            
 
             //number of rooms in the hotel
             NumberOfRoom = Rooms.Count;

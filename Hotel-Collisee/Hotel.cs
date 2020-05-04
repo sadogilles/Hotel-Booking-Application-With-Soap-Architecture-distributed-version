@@ -88,7 +88,7 @@ namespace Hotel_Collisee
             //rooms of the hotel
             Rooms.Add(new Room(1, 100, 3, "single")); //parameters: id, price, number of bed , capacity
             Rooms.Add(new Room(2, 50, 9, "double"));
-            Rooms.Add(new Room(3, 10, 2, "quad"));
+           
 
             //number of rooms in the hotel
             NumberOfRoom = Rooms.Count;

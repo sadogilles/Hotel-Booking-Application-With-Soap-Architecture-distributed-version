@@ -37,10 +37,18 @@ namespace Hotel_Ibis
             set;
         }
 
+        public List<String> ImageUrl 
+        {
+            get;
+            set;
+        
+        }
+
         public Room()
         {
             State = false;
         }
+
 
         public Room(int _id, int _price, int _numberOfBed, String _capacity)
         {
@@ -50,5 +58,6 @@ namespace Hotel_Ibis
             Capacity = _capacity;
             State = false;
         }
+
     }
 }
