@@ -85,7 +85,7 @@ namespace Hotel_Collisee
         public Hotel()
         {
 
-            //rooms of the hotel
+            //rooms of the hotel_
             Rooms.Add(new Room(1, 100, 3, "single")); //parameters: id, price, number of bed , capacity
             Rooms.Add(new Room(2, 50, 9, "double"));
            
