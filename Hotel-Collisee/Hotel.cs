@@ -90,7 +90,7 @@ namespace Hotel_Collisee
             Rooms.Add(new Room(2, 50, 9, "double"));
            
 
-            //number of rooms in the hotel
+            //number of rooms in the hotel_
             NumberOfRoom = Rooms.Count;
 
             //number of bed in hotel
