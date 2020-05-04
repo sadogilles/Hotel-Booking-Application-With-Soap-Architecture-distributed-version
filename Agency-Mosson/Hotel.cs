@@ -73,9 +73,10 @@ namespace Agency_Mosson
             get;
             set;
         } = new List<Offer>();
-
+        //hotel default constructor
         public Hotel()
         {
         }
+        
     }
 }
